@@ -9,11 +9,11 @@ A Python simulator for a **3D memristor crossbar array** (the "TBar" architectur
 <table align="center">
 <tr>
 <td align="center" width="50%">
-<img src="assets/tbar_topology_2x2x2.png" alt="TBarSim 2x2x2 topology" width="100%"><br>
+<img src="assets/tbar_topology_2x2x2.png" alt="TBarSim 2x2x2 topology" width="420" height="343"><br>
 <i>A minimal 2x2x2 TBar — small enough to see every node and edge type individually.</i>
 </td>
 <td align="center" width="50%">
-<img src="assets/tbar_topology_4x4x4.png" alt="TBarSim 4x4x4 solved topology" width="100%"><br>
+<img src="assets/tbar_topology_4x4x4.png" alt="TBarSim 4x4x4 solved topology" width="420" height="343"><br>
 <i>A solved 4x4x4 TBar, after <code>randomize_conductances()</code>, <code>set_bias()</code>, and <code>solve()</code>.</i>
 </td>
 </tr>
@@ -26,11 +26,11 @@ Hovering a **node** shows its solved voltage; hovering a **memristor edge** show
 <table align="center">
 <tr>
 <td align="center" width="50%">
-<img src="assets/tbar_hover_voltage.png" alt="Hovering a bitline node shows its solved voltage" width="100%"><br>
+<img src="assets/tbar_hover_voltage.png" alt="Hovering a bitline node shows its solved voltage" width="420" height="336"><br>
 <i>Hovering B(3,3,0) reads its nodal voltage directly off the graph.</i>
 </td>
 <td align="center" width="50%">
-<img src="assets/tbar_hover_current.png" alt="Hovering a memristor edge shows its conductance and current" width="100%"><br>
+<img src="assets/tbar_hover_current.png" alt="Hovering a memristor edge shows its conductance and current" width="420" height="336"><br>
 <i>Hovering the memristor between W(3,3,3) and B(3,3,3) shows its conductance (G) and solved current (I).</i>
 </td>
 </tr>
