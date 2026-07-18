@@ -31,7 +31,7 @@ Hovering a **node** shows its solved voltage; hovering a **memristor edge** show
 </td>
 <td align="center" width="50%">
 <img src="assets/tbar_hover_current.png" alt="Hovering a memristor edge shows its conductance and current" width="420" height="336"><br>
-<i>Hovering the memristor shows its conductance and current.</i>
+<i>Hovering the memristor shows its G and I</i>
 </td>
 </tr>
 </table>
