@@ -2,7 +2,7 @@ import time
 from crossbar import Tbar
 
 t0 = time.time()
-cb = Tbar(n=4, m=4, p=3)
+cb = Tbar(n=4, m=4, p=4)
 t1 = time.time()
 print(f"Graph build: {t1-t0:.3f}s -> {cb.G.number_of_nodes()} nodes, {cb.G.number_of_edges()} edges")
 
