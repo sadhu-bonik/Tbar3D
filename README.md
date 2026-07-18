@@ -6,35 +6,35 @@ A Python simulator for a **3D memristor crossbar array** (the "TBar" architectur
 
 `Tbar` builds an `n x m x p` crossbar as a graph: each memristor sits between a **wordline node (W)** and a **bitline node (B)**; wordlines and bitlines are connected to their neighbors by wire segments, layers are joined by vertical vias, and each row/column has an **input (I)** or **output (O)** terminal. Calling `.show()` renders this structure interactively in Plotly, color-coded by element type.
 
-<p align="center">
-  <img src="assets/tbar_topology_2x2x2.png" alt="TBarSim 2x2x2 topology" width="480">
-</p>
+<table align="center">
+<tr>
+<td align="center" width="50%">
+<img src="assets/tbar_topology_2x2x2.png" alt="TBarSim 2x2x2 topology" width="100%"><br>
+<i>A minimal 2x2x2 TBar — small enough to see every node and edge type individually.</i>
+</td>
+<td align="center" width="50%">
+<img src="assets/tbar_topology_4x4x4.png" alt="TBarSim 4x4x4 solved topology" width="100%"><br>
+<i>A solved 4x4x4 TBar, after <code>randomize_conductances()</code>, <code>set_bias()</code>, and <code>solve()</code>.</i>
+</td>
+</tr>
+</table>
 
-<p align="center"><i>A minimal 2x2x2 TBar — small enough to see every node and edge type individually.</i></p>
+> **Note:** In the actual app, `.show()` opens this as an **interactive** Plotly figure — you can orbit it in 3D and hover over any node or memristor to read its solved voltage/current directly. The two topology images above are static renders of that same layout/color scheme for the README; the two hover screenshots below are genuine captures straight from `cb.show()`.
 
-At real sizes the structure becomes a dense 3D lattice. Below is a solved 4x4x4 TBar (27 memristors per layer x 4 layers), after `randomize_conductances()`, `set_bias()`, and `solve()` have been called:
+Hovering a **node** shows its solved voltage; hovering a **memristor edge** shows its conductance and the current flowing through it:
 
-<p align="center">
-  <img src="assets/tbar_topology_4x4x4.png" alt="TBarSim 4x4x4 solved topology" width="560">
-</p>
-
-> **Note:** In the actual app, `.show()` opens this as an **interactive** Plotly figure — you can orbit it in 3D and hover over any node or memristor to read its solved voltage/current directly. The two topology images above are static renders of that same layout/color scheme for the README; the two hover screenshots below are captures straight from `cb.show()`.
-
-Hovering a **node** shows its solved voltage:
-
-<p align="center">
-  <img src="assets/tbar_hover_voltage.png" alt="Hovering a bitline node shows its solved voltage" width="560">
-</p>
-
-<p align="center"><i>Hovering B(3,3,0) in a solved TBar reads its nodal voltage directly off the graph.</i></p>
-
-Hovering a **memristor edge** the same way shows its conductance and the current flowing through it:
-
-<p align="center">
-  <img src="assets/tbar_hover_current.png" alt="Hovering a memristor edge shows its conductance and current" width="560">
-</p>
-
-<p align="center"><i>Hovering the memristor between W(3,3,3) and B(3,3,3) reads its conductance (G) and solved current (I).</i></p>
+<table align="center">
+<tr>
+<td align="center" width="50%">
+<img src="assets/tbar_hover_voltage.png" alt="Hovering a bitline node shows its solved voltage" width="100%"><br>
+<i>Hovering B(3,3,0) reads its nodal voltage directly off the graph.</i>
+</td>
+<td align="center" width="50%">
+<img src="assets/tbar_hover_current.png" alt="Hovering a memristor edge shows its conductance and current" width="100%"><br>
+<i>Hovering the memristor between W(3,3,3) and B(3,3,3) shows its conductance (G) and solved current (I).</i>
+</td>
+</tr>
+</table>
 
 `solve()` and `show()` also print a status readout to the console, e.g.:
 
@@ -56,7 +56,8 @@ Solved. Use get_voltage(node) / get_current(u,v), or show() to view results.
 - Configurable parasitics: input/output resistance and wire/via resistance
 - Solves the full nodal (KCL) system with sparse linear algebra (`scipy.sparse.linalg.spsolve`)
 - Retrieve any solved node voltage or branch current directly (`get_voltage`, `get_current`)
-- Interactive 3D visualization of the topology, with hoverable voltages/currents(`show`)
+- Interactive 3D visualization of the topology, with hoverable voltages/currents once solved (`show`)
+- A status readout (`is_ready_to_solve`, printed via `show`/`solve`) telling you exactly what's left to configure
 
 ## Requirements
 
@@ -151,6 +152,8 @@ Each memristor connects a `W(i,j,k)` node to its corresponding `B(i,j,k)` node.
 
 ## Notes
 
+- `solve()` must be called only after conductances and bias voltages are fully specified (check with `is_ready_to_solve()` — `show()` will print exactly what's missing).
+- `show()` opens an interactive Plotly figure; the images in this README are static captures of that same topology and color scheme.
 - Coordinates follow `n` = rows (wordlines), `m` = columns (bitlines), `p` = layers.
 
 ## License
