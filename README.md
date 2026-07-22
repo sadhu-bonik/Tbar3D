@@ -110,7 +110,7 @@ cb.show()
 | --- | --- |
 | `Tbar(n, m, p, S=1e12, L=1e12, GW=1e12)` | Builds the `n x m x p` crossbar graph. `S`/`L` are input/output conductance, `GW` is wire/via conductance (all near-ideal by default). |
 | `set_parasitic_resistance(RW)` | Sets wire/via conductance from a resistance value (`GW = 1/RW`). |
-| `set_parisitic_conductance(GW)` | Sets wire/via conductance directly. |
+| `set_parasitic_conductance(GW)` | Sets wire/via conductance directly. |
 | `set_input_resistance(S)` / `set_output_resistance(L)` | Sets input/output conductance from a resistance value. |
 | `set_input_conductance(S)` / `set_output_conductance(L)` | Sets input/output conductance directly. |
 

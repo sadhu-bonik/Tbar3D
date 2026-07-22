@@ -143,9 +143,9 @@ def main():
         print(f"  {label:16s} ours={ours: .8e}  xyce={xyce: .8e}  err={err:.6f}%")
 
     print()
-    print("Full per-value breakdown:")
-    for label, ours, xyce, err in results:
-        print(f"  {label:16s} ours={ours: .8e}  xyce={xyce: .8e}  err={err:.6f}%")
+    # print("Full per-value breakdown:")
+    # for label, ours, xyce, err in results:
+    #     print(f"  {label:16s} ours={ours: .8e}  xyce={xyce: .8e}  err={err:.6f}%")
 
 
 if __name__ == "__main__":
